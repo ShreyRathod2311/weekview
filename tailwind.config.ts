@@ -26,7 +26,14 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
+				},
+				task: {
+					completed: 'hsl(var(--task-completed))',
+					missed: 'hsl(var(--task-missed))',
+					partial: 'hsl(var(--task-partial))',
+					upcoming: 'hsl(var(--task-upcoming))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
