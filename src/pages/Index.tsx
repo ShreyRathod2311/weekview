@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, CheckSquare, BarChart3, Clock, Star, Zap, LogIn } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { BackgroundPaths } from "@/components/ui/background-paths";
 
 export default function Index() {
   const { isAuthenticated, loading } = useAuth();
@@ -18,8 +19,9 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary-glow/10">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary-glow/10 relative">
+      <BackgroundPaths className="z-0" />
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="text-center space-y-8 max-w-4xl mx-auto">
           <div className="space-y-4">
             <div className="flex justify-center">
