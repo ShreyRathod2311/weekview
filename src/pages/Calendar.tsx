@@ -17,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 export default function Calendar() {
   const [activeTab, setActiveTab] = useState('calendar');
   const { user, signOut, loading: authLoading } = useAuth();
-  const { tasks, addTask, updateTaskStatus, loading: tasksLoading } = useTasks();
+  const { tasks, addTask, updateTaskStatus, deleteTask, loading: tasksLoading } = useTasks();
   const { todos, addTodo, toggleTodo, deleteTodo, loading: todosLoading } = useTodos();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -110,10 +110,11 @@ export default function Calendar() {
                 <TaskForm onAddTask={handleTaskSubmit} />
               </div>
               <div className="lg:col-span-2">
-                <WeeklyCalendar 
-                  tasks={tasks} 
-                  onUpdateTaskStatus={updateTaskStatus} 
-                />
+            <WeeklyCalendar 
+              tasks={tasks} 
+              onUpdateTaskStatus={updateTaskStatus}
+              onDeleteTask={deleteTask}
+            />
               </div>
             </div>
           </TabsContent>

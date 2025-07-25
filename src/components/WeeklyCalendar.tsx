@@ -2,12 +2,13 @@ import { Task, TaskStatus } from '@/types/calendar';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, XCircle, MinusCircle, Clock } from 'lucide-react';
+import { CheckCircle, XCircle, MinusCircle, Clock, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface WeeklyCalendarProps {
   tasks: Task[];
   onUpdateTaskStatus: (taskId: string, status: TaskStatus) => void;
+  onDeleteTask: (taskId: string) => void;
 }
 
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -27,7 +28,7 @@ const STATUS_ICONS = {
   partial: MinusCircle,
 };
 
-export function WeeklyCalendar({ tasks, onUpdateTaskStatus }: WeeklyCalendarProps) {
+export function WeeklyCalendar({ tasks, onUpdateTaskStatus, onDeleteTask }: WeeklyCalendarProps) {
   const getTasksForTimeSlot = (dayOfWeek: number, hour: number) => {
     return tasks.filter((task) => {
       const taskStart = new Date(task.startTime);
@@ -119,41 +120,52 @@ export function WeeklyCalendar({ tasks, onUpdateTaskStatus }: WeeklyCalendarProp
                           )}
                         </div>
                         
-                        {/* Status change buttons on hover */}
-                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity rounded flex items-center justify-center">
+                        {/* Status change and delete buttons on hover */}
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded flex items-center justify-center">
                           <div className="flex gap-1">
                             <Button
                               size="sm"
                               variant="secondary"
-                              className="h-6 w-6 p-0"
+                              className="h-6 w-6 p-0 bg-task-completed/20 hover:bg-task-completed/40 border-task-completed"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 onUpdateTaskStatus(task.id, 'completed');
                               }}
                             >
-                              <CheckCircle className="h-3 w-3" />
+                              <CheckCircle className="h-3 w-3 text-task-completed" />
                             </Button>
                             <Button
                               size="sm"
                               variant="secondary"
-                              className="h-6 w-6 p-0"
+                              className="h-6 w-6 p-0 bg-task-partial/20 hover:bg-task-partial/40 border-task-partial"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 onUpdateTaskStatus(task.id, 'partial');
                               }}
                             >
-                              <MinusCircle className="h-3 w-3" />
+                              <MinusCircle className="h-3 w-3 text-task-partial" />
                             </Button>
                             <Button
                               size="sm"
                               variant="secondary"
-                              className="h-6 w-6 p-0"
+                              className="h-6 w-6 p-0 bg-task-missed/20 hover:bg-task-missed/40 border-task-missed"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 onUpdateTaskStatus(task.id, 'missed');
                               }}
                             >
-                              <XCircle className="h-3 w-3" />
+                              <XCircle className="h-3 w-3 text-task-missed" />
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="destructive"
+                              className="h-6 w-6 p-0 bg-destructive/20 hover:bg-destructive/40 border-destructive"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onDeleteTask(task.id);
+                              }}
+                            >
+                              <Trash2 className="h-3 w-3 text-destructive" />
                             </Button>
                           </div>
                         </div>
