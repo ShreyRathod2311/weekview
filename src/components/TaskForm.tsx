@@ -66,7 +66,7 @@ export function TaskForm({ onAddTask }: TaskFormProps) {
   };
 
   return (
-    <Card className="border-none shadow-lg bg-gradient-to-br from-white to-secondary">
+    <Card className="rounded-lg text-card-foreground p-4 bg-background border shadow-lg">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Plus className="h-5 w-5 text-primary" />

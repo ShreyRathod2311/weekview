@@ -15,7 +15,7 @@ export function WeeklyStats({ stats }: WeeklyStatsProps) {
     : 0;
 
   return (
-    <Card className="border-none shadow-lg bg-gradient-to-br from-primary/5 to-primary-glow/10">
+    <Card className="rounded-lg text-card-foreground p-4 bg-background border shadow-lg">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2 text-lg">
           <TrendingUp className="h-5 w-5 text-primary" />

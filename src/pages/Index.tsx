@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 
+
 export default function Index() {
   const { isAuthenticated, loading } = useAuth();
 
@@ -50,12 +51,7 @@ export default function Index() {
               </Button>
             ) : (
               <>
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <Link to="/auth">
-                    <LogIn className="mr-2 h-5 w-5" />
-                    Sign In
-                  </Link>
-                </Button>
+                
                 
                 <Button asChild variant="outline" size="lg" className="border-2 border-primary/20 hover:border-primary hover:bg-primary/5 font-semibold px-8 py-6 rounded-xl transition-all duration-300">
                   <Link to="/auth">

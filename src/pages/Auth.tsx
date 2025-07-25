@@ -104,7 +104,7 @@ export default function Auth() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary-glow/10 flex items-center justify-center p-4 relative">
       <BackgroundPaths className="z-0" />
-      <Card className="w-full max-w-md shadow-xl border-none bg-white/80 backdrop-blur-sm relative z-10">
+      <Card className="w-full max-w-md shadow-xl border-none bg-black backdrop-blur-sm relative z-10">
         <CardHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <div className="p-3 rounded-full bg-primary/10">
@@ -153,7 +153,7 @@ export default function Auth() {
                     <span className="w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-white px-2 text-muted-foreground">Or continue with email</span>
+                    <span className="bg-black px-2 text-muted-foreground">Or continue with email</span>
                   </div>
                 </div>
 
@@ -226,11 +226,11 @@ export default function Auth() {
                   <div>
                     <Input
                       type="password"
-                      placeholder="Password (min 6 characters)"
+                      placeholder="Password (min 8 characters)"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      minLength={6}
+                      minLength={8}
                     />
                   </div>
                   <Button 
