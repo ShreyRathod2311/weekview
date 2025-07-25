@@ -3,6 +3,7 @@ import { Calendar, CheckSquare, BarChart3, Clock, Star, Zap, LogIn } from "lucid
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { BackgroundPaths } from "@/components/ui/background-paths";
+import { RetroCard, RetroCardHeader, RetroCardTitle, RetroCardDescription, RetroCardContent, RetroCardIcon } from "@/components/ui/retro-card";
 
 
 export default function Index() {
@@ -102,27 +103,53 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Additional Features */}
+          {/* Retro Feature Cards */}
           <div className="grid md:grid-cols-2 gap-6 mt-8">
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-task-completed/10 to-task-completed/5 border border-task-completed/20">
-              <div className="flex items-center space-x-4">
-                <CheckSquare className="h-8 w-8 text-task-completed" />
-                <div className="text-left">
-                  <h4 className="text-lg font-semibold">Task Management</h4>
-                  <p className="text-muted-foreground">Status tracking with visual color coding</p>
+            <RetroCard>
+              <RetroCardHeader>
+                <RetroCardIcon>
+                  <CheckSquare className="h-8 w-8 text-neon-cyan" />
+                </RetroCardIcon>
+                <RetroCardTitle>Task Management</RetroCardTitle>
+              </RetroCardHeader>
+              <RetroCardContent>
+                <RetroCardDescription>
+                  Advanced status tracking with visual color coding, priority levels, and completion analytics. 
+                  Organize your workflow with intelligent task categorization and progress monitoring.
+                </RetroCardDescription>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="px-3 py-1 text-xs bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/30 rounded-full">
+                    Priority System
+                  </span>
+                  <span className="px-3 py-1 text-xs bg-neon-purple/20 text-neon-purple border border-neon-purple/30 rounded-full">
+                    Visual Coding
+                  </span>
                 </div>
-              </div>
-            </div>
+              </RetroCardContent>
+            </RetroCard>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary-glow/5 border border-primary/20">
-              <div className="flex items-center space-x-4">
-                <Zap className="h-8 w-8 text-primary" />
-                <div className="text-left">
-                  <h4 className="text-lg font-semibold">Cloud Sync</h4>
-                  <p className="text-muted-foreground">Access your calendar from any device</p>
+            <RetroCard>
+              <RetroCardHeader>
+                <RetroCardIcon>
+                  <Zap className="h-8 w-8 text-neon-purple" />
+                </RetroCardIcon>
+                <RetroCardTitle>Cloud Sync</RetroCardTitle>
+              </RetroCardHeader>
+              <RetroCardContent>
+                <RetroCardDescription>
+                  Seamless synchronization across all your devices with real-time updates. 
+                  Never lose your data with automatic backups and instant access from anywhere.
+                </RetroCardDescription>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="px-3 py-1 text-xs bg-neon-purple/20 text-neon-purple border border-neon-purple/30 rounded-full">
+                    Real-time Sync
+                  </span>
+                  <span className="px-3 py-1 text-xs bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/30 rounded-full">
+                    Auto Backup
+                  </span>
                 </div>
-              </div>
-            </div>
+              </RetroCardContent>
+            </RetroCard>
           </div>
         </div>
       </div>
