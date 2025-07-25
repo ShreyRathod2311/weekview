@@ -73,7 +73,11 @@ const RetroCardIcon = React.forwardRef<
   <div
     ref={ref}
     className={cn(
+<<<<<<< HEAD
       "p-3 rounded-full bg-background w-fit",
+=======
+      "p-3 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 w-fit",
+>>>>>>> 2b1620fa45e0bff3e7ca54f989342dd106ea84d9
       "shadow-lg shadow-neon-cyan/20",
       className
     )}
