@@ -89,7 +89,7 @@ export default function Calendar() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 bg-white/50 backdrop-blur-sm">
+          <TabsList className="grid w-full grid-cols-3 bg-white/10 backdrop-blur-sm">
             <TabsTrigger value="calendar" className="flex items-center gap-2">
               <CalendarIcon className="h-4 w-4" />
               Calendar
