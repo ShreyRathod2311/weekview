@@ -1,140 +1,58 @@
-import { Button } from "@/components/ui/button";
-import { Calendar, CheckSquare, BarChart3, Clock, Star, Zap, LogIn } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
-import { BackgroundPaths } from "@/components/ui/background-paths";
-import { RetroCard, RetroCardHeader, RetroCardTitle, RetroCardDescription, RetroCardContent, RetroCardIcon } from "@/components/ui/retro-card";
-import { TypingAnimation } from "@/components/ui/typing-animation";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import React from 'react';
 
-export function TypingAnimationDemo() {
-  return (
-    <TypingAnimation
-      className="text-2xl md:text-2xl font-semibold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent leading-tight"
-      text="Made by Shrey Rathod with ❤️"
-    />
-  );
+interface BackgroundPathsProps {
+  className?: string;
 }
 
-export default function Index() {
-  const { isAuthenticated, loading } = useAuth();
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary-glow/10 flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <Calendar className="h-12 w-12 text-primary mx-auto animate-pulse" />
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
+export const BackgroundPaths: React.FC<BackgroundPathsProps> = ({ className = "" }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary-glow/10 relative">
-      <BackgroundPaths className="z-0" />
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="text-center space-y-8 max-w-4xl mx-auto">
-          <div className="space-y-4">
-            <div className="flex justify-center">
-              <div className="p-4 rounded-full bg-gradient-to-r from-primary/20 to-primary-glow/20 backdrop-blur-sm">
-                <Calendar className="h-16 w-16 text-primary" />
-              </div>
-            </div>
-            
-            <h1 className="text-4xl md:text-xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent leading-tight">
-              Weekly Calendar
-            </h1>
-            
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Plan, track, and manage your weekly tasks with intelligent scheduling, 
-              real-time notifications, and comprehensive analytics.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {isAuthenticated ? (
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <Link to="/calendar">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Open Calendar
-                </Link>
-              </Button>
-            ) : (
-              <>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-primary/20 hover:border-primary hover:bg-primary/5 font-semibold px-8 py-6 rounded-xl transition-all duration-300"
-                >
-                  <Link to="/auth">
-                    <LogIn className="mr-2 h-5 w-5" />
-                    Sign In
-                  </Link>
-                </Button>
-              </>
-            )}
-          </div>
-
-          {/* Features Grid */}
-          <TypingAnimationDemo />
-
-          {/* Retro Feature Cards Carousel */}
-          <div className="w-full max-w-4xl mx-auto">
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-2 md:-ml-4">
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <RetroCard>
-                    <RetroCardHeader>
-                      <RetroCardIcon />
-                      <RetroCardTitle>Task Management</RetroCardTitle>
-                      <RetroCardDescription>
-                        Organize your weekly tasks and stay productive with intelligent scheduling.
-                      </RetroCardDescription>
-                    </RetroCardHeader>
-                  </RetroCard>
-                </CarouselItem>
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <RetroCard>
-                    <RetroCardHeader>
-                      <RetroCardIcon />
-                      <RetroCardTitle>Cloud Sync</RetroCardTitle>
-                      <RetroCardDescription>
-                        Sync your tasks across all devices with real-time cloud synchronization.
-                      </RetroCardDescription>
-                    </RetroCardHeader>
-                  </RetroCard>
-                </CarouselItem>
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <RetroCard>
-                    <RetroCardHeader>
-                      <RetroCardIcon />
-                      <RetroCardTitle>Analytics</RetroCardTitle>
-                      <RetroCardDescription>
-                        Track your progress with insightful analytics and productivity metrics.
-                      </RetroCardDescription>
-                    </RetroCardHeader>
-                  </RetroCard>
-                </CarouselItem>
-                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <RetroCard>
-                    <RetroCardHeader>
-                      <RetroCardIcon />
-                      <RetroCardTitle>Reminders</RetroCardTitle>
-                      <RetroCardDescription>
-                        Get timely reminders for your important tasks and never miss deadlines.
-                      </RetroCardDescription>
-                    </RetroCardHeader>
-                  </RetroCard>
-                </CarouselItem>
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex" />
-              <CarouselNext className="hidden md:flex" />
-            </Carousel>
-          </div>
-        </div>
-      </div>
+    <div className={`absolute inset-0 overflow-hidden ${className}`}>
+      <svg
+        className="absolute inset-0 w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        viewBox="0 0 1200 800"
+      >
+        <defs>
+          <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+            <stop offset="50%" stopColor="hsl(var(--primary-glow))" stopOpacity="0.05" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+          </linearGradient>
+        </defs>
+        
+        {/* Curved paths */}
+        <path
+          d="M0,300 Q300,100 600,200 T1200,150"
+          stroke="url(#path-gradient)"
+          strokeWidth="2"
+          fill="none"
+          className="animate-pulse"
+        />
+        <path
+          d="M0,400 Q400,200 800,300 T1200,250"
+          stroke="url(#path-gradient)"
+          strokeWidth="1.5"
+          fill="none"
+          className="animate-pulse"
+          style={{ animationDelay: '1s' }}
+        />
+        <path
+          d="M0,500 Q200,300 600,400 T1200,350"
+          stroke="url(#path-gradient)"
+          strokeWidth="1"
+          fill="none"
+          className="animate-pulse"
+          style={{ animationDelay: '2s' }}
+        />
+        
+        {/* Dots along paths */}
+        <circle cx="200" cy="250" r="3" fill="hsl(var(--primary))" fillOpacity="0.3" className="animate-ping" />
+        <circle cx="500" cy="180" r="2" fill="hsl(var(--primary-glow))" fillOpacity="0.4" className="animate-ping" style={{ animationDelay: '0.5s' }} />
+        <circle cx="800" cy="200" r="2.5" fill="hsl(var(--primary))" fillOpacity="0.3" className="animate-ping" style={{ animationDelay: '1.5s' }} />
+        <circle cx="300" cy="350" r="2" fill="hsl(var(--primary-glow))" fillOpacity="0.4" className="animate-ping" style={{ animationDelay: '2.5s' }} />
+        <circle cx="700" cy="320" r="3" fill="hsl(var(--primary))" fillOpacity="0.3" className="animate-ping" style={{ animationDelay: '3s' }} />
+      </svg>
     </div>
   );
-}
+};
