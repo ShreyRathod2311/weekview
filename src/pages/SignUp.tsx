@@ -4,13 +4,13 @@ import { Input } from '@/components/ui/input';
 import { SignInCard, SignInCardContent, SignInCardDescription, SignInCardFooter, SignInCardHeader, SignInCardTitle } from '@/components/ui/sign-in-card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { Calendar, LogIn, UserPlus, ArrowRight } from 'lucide-react';
+import { Calendar, UserPlus, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { BackgroundPaths } from '@/components/ui/background-paths';
 import { Link } from 'react-router-dom';
 
-export default function Auth() {
+export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -57,7 +57,7 @@ export default function Auth() {
     setLoading(false);
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignUp = async () => {
     setLoading(true);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -68,37 +68,12 @@ export default function Auth() {
 
     if (error) {
       toast({
-        title: "Google Sign In Failed",
+        title: "Google Sign Up Failed",
         description: error.message,
         variant: "destructive"
       });
       setLoading(false);
     }
-  };
-
-  const handleSignIn = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      toast({
-        title: "Sign In Failed",
-        description: error.message,
-        variant: "destructive"
-      });
-    } else {
-      toast({
-        title: "Welcome back!",
-        description: "Successfully signed in.",
-      });
-      navigate('/calendar');
-    }
-    setLoading(false);
   };
 
   return (
@@ -111,15 +86,15 @@ export default function Auth() {
               <Calendar className="h-8 w-8 text-primary" />
             </div>
           </div>
-          <SignInCardTitle>Welcome Back</SignInCardTitle>
+          <SignInCardTitle>Create Account</SignInCardTitle>
           <SignInCardDescription>
-            Sign in to your account to access your weekly calendar
+            Join Weekly Calendar and start organizing your tasks
           </SignInCardDescription>
         </SignInCardHeader>
         
         <SignInCardContent className="space-y-6">
           <Button 
-            onClick={handleGoogleSignIn}
+            onClick={handleGoogleSignUp}
             variant="outline"
             className="w-full h-12 border-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-300"
             disabled={loading}
@@ -130,7 +105,7 @@ export default function Auth() {
               <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
               <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
-            {loading ? "Signing in..." : "Continue with Google"}
+            {loading ? "Creating account..." : "Continue with Google"}
           </Button>
           
           <div className="relative">
@@ -142,7 +117,7 @@ export default function Auth() {
             </div>
           </div>
 
-          <form onSubmit={handleSignIn} className="space-y-4">
+          <form onSubmit={handleSignUp} className="space-y-4">
             <div className="space-y-2">
               <Input
                 type="email"
@@ -156,11 +131,12 @@ export default function Auth() {
             <div className="space-y-2">
               <Input
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Create a password (min 8 characters)"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="h-12"
                 required
+                minLength={8}
               />
             </div>
             <Button 
@@ -171,12 +147,12 @@ export default function Auth() {
               {loading ? (
                 <div className="flex items-center">
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                  Signing in...
+                  Creating account...
                 </div>
               ) : (
                 <>
-                  Sign In
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  Create Account
+                  <ArrowLeft className="ml-2 h-4 w-4 rotate-180" />
                 </>
               )}
             </Button>
@@ -185,12 +161,12 @@ export default function Auth() {
 
         <SignInCardFooter className="justify-center">
           <p className="text-sm text-muted-foreground">
-            Don't have an account?{' '}
+            Already have an account?{' '}
             <Link 
-              to="/signup" 
+              to="/auth" 
               className="text-primary hover:text-primary-glow font-medium transition-colors duration-200 hover:underline"
             >
-              Sign up here
+              Sign in here
             </Link>
           </p>
         </SignInCardFooter>
