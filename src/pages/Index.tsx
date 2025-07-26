@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import { RetroCard, RetroCardHeader, RetroCardTitle, RetroCardDescription, RetroCardContent, RetroCardIcon } from "@/components/ui/retro-card";
-import { TypingAnimation } from "@/components/ui/typing-animation"
+import { TypingAnimation } from "@/components/ui/typing-animation";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export function TypingAnimationDemo() {
   return (
@@ -79,35 +80,58 @@ export default function Index() {
           {/* Features Grid */}
           <TypingAnimationDemo />
 
-          {/* Retro Feature Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-15">
-            <RetroCard>
-              <RetroCardHeader>
-                <RetroCardIcon />
-                <RetroCardTitle>Task Management</RetroCardTitle>
-                <RetroCardDescription>
-                  Organize your weekly tasks and stay productive.
-                </RetroCardDescription>
-              </RetroCardHeader>
-            </RetroCard>
-            <RetroCard>
-              <RetroCardHeader>
-                <RetroCardIcon />
-                <RetroCardTitle>Analytics</RetroCardTitle>
-                <RetroCardDescription>
-                  Track your progress with insightful analytics.
-                </RetroCardDescription>
-              </RetroCardHeader>
-            </RetroCard>
-            <RetroCard>
-              <RetroCardHeader>
-                <RetroCardIcon />
-                <RetroCardTitle>Reminders</RetroCardTitle>
-                <RetroCardDescription>
-                  Get timely reminders for your important tasks.
-                </RetroCardDescription>
-              </RetroCardHeader>
-            </RetroCard>
+          {/* Retro Feature Cards Carousel */}
+          <div className="w-full max-w-4xl mx-auto">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-2 md:-ml-4">
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <RetroCard>
+                    <RetroCardHeader>
+                      <RetroCardIcon />
+                      <RetroCardTitle>Task Management</RetroCardTitle>
+                      <RetroCardDescription>
+                        Organize your weekly tasks and stay productive with intelligent scheduling.
+                      </RetroCardDescription>
+                    </RetroCardHeader>
+                  </RetroCard>
+                </CarouselItem>
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <RetroCard>
+                    <RetroCardHeader>
+                      <RetroCardIcon />
+                      <RetroCardTitle>Cloud Sync</RetroCardTitle>
+                      <RetroCardDescription>
+                        Sync your tasks across all devices with real-time cloud synchronization.
+                      </RetroCardDescription>
+                    </RetroCardHeader>
+                  </RetroCard>
+                </CarouselItem>
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <RetroCard>
+                    <RetroCardHeader>
+                      <RetroCardIcon />
+                      <RetroCardTitle>Analytics</RetroCardTitle>
+                      <RetroCardDescription>
+                        Track your progress with insightful analytics and productivity metrics.
+                      </RetroCardDescription>
+                    </RetroCardHeader>
+                  </RetroCard>
+                </CarouselItem>
+                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <RetroCard>
+                    <RetroCardHeader>
+                      <RetroCardIcon />
+                      <RetroCardTitle>Reminders</RetroCardTitle>
+                      <RetroCardDescription>
+                        Get timely reminders for your important tasks and never miss deadlines.
+                      </RetroCardDescription>
+                    </RetroCardHeader>
+                  </RetroCard>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
           </div>
         </div>
       </div>

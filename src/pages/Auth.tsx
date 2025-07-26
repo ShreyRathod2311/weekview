@@ -209,7 +209,7 @@ export default function Auth() {
                     <span className="w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-white px-2 text-muted-foreground">Or create account with email</span>
+                    <span className="bg-black px-2 text-muted-foreground">Or create account with email</span>
                   </div>
                 </div>
 
