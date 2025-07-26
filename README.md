@@ -15,7 +15,7 @@ WeekView is a sleek, minimal, and responsive weekly scheduling app that allows u
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React, VITE
+- **Frontend:** React, VITE ,next.js
 - **Styling:** Tailwind CSS / CSS Modules 
 - **Backend:** Supabase
 - **Deployment:** [Vercel](https://vercel.com)
